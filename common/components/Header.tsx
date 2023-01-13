@@ -10,7 +10,6 @@ function Header() {
                 <Logo 
                     width="86" 
                     height="57" 
-                    onClick={() => console.log(`go to insta`)}
                     cursor="pointer"
                 />
             </Box>
@@ -23,7 +22,6 @@ function Header() {
                     as={FaInstagram}
                     color="black"
                     fontSize="25px"
-                    onClick={() => console.log(`go to insta`)}
                     cursor="pointer"
                     transition='all 400ms ease'
                     _hover={{ boxShadow: 'xl', transform: 'translateY(-1px)' }}
@@ -32,7 +30,6 @@ function Header() {
                     as={FaFacebookF}
                     color="black"
                     fontSize="25px"
-                    onClick={() => console.log(`go to insta`)}
                     cursor="pointer"
                     transition='all 400ms ease'
                     _hover={{ boxShadow: 'xl', transform: 'translateY(-1px)' }}
@@ -41,7 +38,6 @@ function Header() {
                     as={FaMailBulk}
                     color="black"
                     fontSize="25px"
-                    onClick={() => console.log(`go to insta`)}
                     cursor="pointer"
                     transition='all 400ms ease'
                   _hover={{ boxShadow: 'xl', transform: 'translateY(-1px)' }}
