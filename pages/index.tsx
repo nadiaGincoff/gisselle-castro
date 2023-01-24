@@ -2,12 +2,12 @@ import Head from 'next/head';
 
 // Components
 import {
-  Text, Flex, Box, Image, Stack, VStack, SimpleGrid,
+  Stack
 } from '@chakra-ui/react';
 
 import HomeScreen from './home'
 
-function Home({ children }) {
+function Home() {
   return (
     <Stack width="100%" justifyContent="space-between" flexDirection="column"> 
       <Head>

@@ -10,7 +10,7 @@ function DynamicShadowImage({ src, text }: Props) {
     <Box 
       flexDirection="column"
       cursor="pointer"
-      marginY="12"
+      marginY="8"
       w={["45vh", "45vh", "30vh", "25vh" ]}
       h={["50vh", "50vh", "35vh", "30vh" ]} 
     >
@@ -23,10 +23,9 @@ function DynamicShadowImage({ src, text }: Props) {
         objectFit="cover"
       />
       <Text   
-        fontSize={{ base: '1.2rem', md: '1.1rem', lg: '1.2rem' }} 
-        fontWeight="500"
-        color="black"
-        height="5vh"
+        fontSize={{ base: '1.2rem', md: '1.1rem', lg: '0.9vw' }} 
+        fontWeight="400"
+        color="white"
         marginTop="2"
       >
         {text}

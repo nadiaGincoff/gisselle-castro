@@ -1,13 +1,11 @@
-import Head from 'next/head';
-
 // Components
 import {
-  Text, Flex, Box, Image, Stack, VStack, SimpleGrid,
+  Text, Flex, Box, Image, Stack, chakra, shouldForwardProp
 } from '@chakra-ui/react';
+import { motion, isValidMotionProp } from 'framer-motion'
 
 import { DynamicShadowImage }  from '../../common/components';
 
-import { FaPlay } from 'react-icons/fa';
 
 const images = [
   {
@@ -41,11 +39,11 @@ function InstagramVideos() {
         fontWeight="bold"
         marginTop="5vh"
         marginBottom="1vh"
-        color="black"
+        color="white"
       >
         FOLLOW MY JOURNEY
       </Text>
-      <Box height="0.5" width={["30%", "90%", "20%","20%"]} bg="orange" />
+      <Box height="0.5" width={["30%", "90%", "20%","20%"]} bg="orange"  marginBottom="3vh" />
       <Flex 
         flexDirection={["column", "column", "row", "row"]} 
         width={["90%", "90%", "85%", "80%"]}
@@ -59,69 +57,83 @@ function InstagramVideos() {
           return (
             <DynamicShadowImage src={src} text={text} key={src} />
           )
-        }
-        )}
+        })}
       </Flex>
     </Stack>
   )
 }
 
+const ChakraBox = chakra(motion.div, {
+  shouldForwardProp: (prop) => isValidMotionProp(prop) || shouldForwardProp(prop),
+});
+
 function HomeScreen() {
   return (
-    <Stack width="100%" justifyContent="space-between" flexDirection="column"> 
-      <Stack 
-        justifyContent="center" 
-        alignItems="center"
-        paddingY={0} 
+    <Stack 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{
+        duration: 0.5,
+        ease: "easeInOut",
+      }}
+      as={motion.div}
+      width="100%" 
+      justifyContent="space-between" 
+      flexDirection="column" 
+      flexWrap="wrap" 
+      alignItems="center"
+    >
+      <Stack     
+        style={{
+          backgroundImage: `linear-gradient(
+              to bottom,
+              #1D1D1D,
+              rgba(140, 135, 126, 0.5)
+            ), url("/assets/home-.jpg")`,
+          backgroundSize: `cover`,
+          backgroundPosition: `center`,
+          backgroundRepeat: `no-repeat`,
+        }} 
         width="100%" 
-        flexDirection={["column", "column", "row"]}
-        marginTop={["0", "0", "1vh"]}
-        height={["100vh", "100vh", "55vh"]}
+        height="100vh"
+        alignItems="center"
+        justifyContent={{ base: `flex-end`, lg: `center`}}
       >
-        <Box
+        <ChakraBox
+          textAlign="center"
           paddingX={{ base: '2rem', md: '0rem', lg: '2rem' }} 
-          alignItems={{ base: 'center', md: 'center', lg: 'left' }} 
-          justifyContent={{ base: 'center', md: 'center', lg: 'left' }}
+          alignItems={{ base: 'center', md: 'center', lg: 'center' }} 
+          justifyContent={{ base: 'center', md: 'center', lg: 'center' }}
           width={{ base: '100%', md: '50%', lg: '50%' }}
         >
           <Text 
-            fontSize={{ base: '2rem', md: '2.2rem', lg: '4rem' }} 
+            fontSize={{ base: "7vw", lg: "3vw" }}
             fontWeight="extrabold"
-            bgGradient='linear(to-l, #958671, #806655, #794426, #634436, #121313)'
-            bgClip="text"
-          >
-            Hey! I'm Gisele
+            color="white"
+          > 
+            GISELE ESCUDERO  
           </Text>
           <Text 
-            fontSize={{ base: '1rem', md: '1.2rem', lg: '1.8rem' }} 
+            fontSize={{ base: '0.8rem', md: '1rem', lg: '1.5rem' }} 
+            mb="3" 
+            fontWeight="bold"
+            color="white"
+          >
+            PROFESSIONAL CONTORTIONIST TEACHER 
+          </Text>
+          <Text 
+            fontSize={{ base: '0.8rem', md: '1rem', lg: '1.1rem' }} 
             width={{ base: '100%', md: '100%', lg: '100%' }} 
             marginBottom="5vh"
           >
-            "If it doesn't challenge you, it won't change you."
-            It's my Slogan and I will help you be the best you can be
-            I'm Emma Jones, I've been a Fitness Trainer since 2010,
-            Fitness, Health and Lifestyle influencer.
+            Creadora de GisContorsion, me dedico a mejorar el rendimiento físico de toda persona, desde iniciación a atletas, bailarines o artistas circenses.
+Me formé con una base sólida en la danza clásica, como Maestra superior en Danzas clásicas, diplomada internacional como profesora de yoga y diversos cursos de Flexibilidad, acondicionamiento físico en diferentes áreas, como la gimnasia rítmica, handstands y otras disciplinas.
           </Text>
-        </Box>
-        <Image
-          marginTop="5rem"
-          borderRadius='full'
-          src="/assets/home.jpg"
-          alt="background-home"
-          w={["40vh", "30vh", "25vh", "50vh" ]}
-          h={["40vh", "30vh", "25vh", "50vh" ]}
-          objectFit="cover"
-        />
+        </ChakraBox>
       </Stack>
-      <Image
-        marginTop="3rem"
-        height="37vh"
-        src="/assets/middle-home.jpg"
-        alt="background-home"
-        objectFit="cover"
-        filter="grayscale(100%)"
-      />
-      <InstagramVideos />
+      <Stack bg="#1D1D1D" height={["auto", "auto", "auto", "55vh"]} width="100%">
+        <InstagramVideos />
+      </Stack>
     </Stack>
   )
 }
